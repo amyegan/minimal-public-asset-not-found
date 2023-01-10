@@ -3,10 +3,10 @@ import type { NextApiRequest, NextApiResponse } from "next";
 var fs = require("fs"); // Load the filesystem module
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  var stats = fs.statSync("public/Roboto-Regular.ttf");
+  var stats = fs.statSync("Roboto-Regular.ttf");
 
   if (req.query.hello === "imageFile") {
-    stats = fs.statSync("public/next.svg");
+    stats = fs.statSync("next.svg");
   }
 
   var fileSizeInBytes = stats.size;
