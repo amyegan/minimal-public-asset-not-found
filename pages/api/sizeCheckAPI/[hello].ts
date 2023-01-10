@@ -3,13 +3,19 @@ import type { NextApiRequest, NextApiResponse } from "next";
 var fs = require("fs"); // Load the filesystem module
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  var stats = fs.statSync("Roboto-Regular.ttf");
+  var fileSizeInBytes = 0;
+  try {
+    var stats = fs.statSync("/Roboto-Regular.ttf");
 
-  if (req.query.hello === "imageFile") {
-    stats = fs.statSync("next.svg");
+    if (req.query.hello === "imageFile") {
+      stats = fs.statSync("/next.svg");
+    }
+
+    fileSizeInBytes = stats.size;
+    console.log(fileSizeInBytes);
+  } catch (err) {
+    console.log(JSON.stringify(err));
   }
 
-  var fileSizeInBytes = stats.size;
-  console.log(fileSizeInBytes);
   res.status(200).json(fileSizeInBytes);
 }
