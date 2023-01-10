@@ -16,24 +16,24 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     finalImageFilePath = "public/staticAssets/next.svg"; // for dev / localhost only
   } else {
     // Attempt at using path.join as seen in https://vercel.com/guides/how-can-i-use-files-in-serverless-functions
-    /* finalFontFilePath = path.join(
-      process.cwd(),
-      "staticAssets",
-      "Roboto-Regular.ttf"
-    );
-    finalImageFilePath = path.join(process.cwd(), "staticAssets", "next.svg"); */
+    // finalFontFilePath = path.join(
+    //   process.cwd(),
+    //   "staticAssets",
+    //   "Roboto-Regular.ttf"
+    // );
+    // finalImageFilePath = path.join(process.cwd(), "staticAssets", "next.svg");
+
+    // Based on URL...dumb test
+    //   finalFontFilePath =
+    //     "https://minimal-public-asset-not-found.vercel.app/staticAssets/Roboto-Regular.ttf";
+    //   finalImageFilePath =
+    //     "https://minimal-public-asset-not-found.vercel.app/staticAssets/next.svg";
+    //
 
     // Based on the output source in vercel deployment this is the file path I would expect to work
-    /* finalFontFilePath = "staticAssets/Roboto-Regular.ttf";
-    finalImageFilePath = "staticAssets/next.svg"; */
-
-    // Based on URL
-    finalFontFilePath =
-      "https://minimal-public-asset-not-found.vercel.app/staticAssets/Roboto-Regular.ttf";
-    finalImageFilePath =
-      "https://minimal-public-asset-not-found.vercel.app/staticAssets/next.svg";
+    finalFontFilePath = "staticAssets/Roboto-Regular.ttf";
+    finalImageFilePath = "staticAssets/next.svg";
   }
-
   try {
     var stats = fs.statSync(finalFontFilePath);
 
